@@ -1,4 +1,7 @@
 from tkinter import *
+from requests import *
+
+r = get('https://api.coindesk.com/v1/bpi/currentprice.json', params=None)
 
 def center(toplevel):
     toplevel.update_idletasks()
@@ -11,7 +14,13 @@ def center(toplevel):
 
 
 window = Tk()
-window.minsize(600,600)
+window.title("Trader")
+window.minsize(50,50)
+T = Text(window, height=50, width=50)
+T.pack()
+T.insert(END, r.text)
 center(window)
+mainloop()
+
 
 window.mainloop()
